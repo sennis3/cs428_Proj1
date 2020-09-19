@@ -36,8 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ClimateScript.cs" />
      <Compile Include="Assets\Scripts\DateScript.cs" />
+     <Compile Include="Assets\Scripts\MainConditionScript.cs" />
      <Compile Include="Assets\Scripts\TimeScript.cs" />
+     <Compile Include="Assets\Scripts\WindScript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -636,6 +639,9 @@
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="VuforiaScripts">
+        <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/VuforiaScripts.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -644,6 +650,9 @@
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="VuforiaEditorScripts">
+        <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/VuforiaEditorScripts.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
         <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
@@ -656,12 +665,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="VuforiaScripts">
-        <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/VuforiaScripts.dll</HintPath>
-    </Reference>
-    <Reference Include="VuforiaEditorScripts">
-        <HintPath>/Users/seanennis/Desktop/Unity Games/CS428  Proj1/Library/ScriptAssemblies/VuforiaEditorScripts.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
