@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ClimateScript.cs" />
      <Compile Include="Assets\Scripts\DateScript.cs" />
+     <Compile Include="Assets\Scripts\IconScript.cs" />
      <Compile Include="Assets\Scripts\MainConditionScript.cs" />
      <Compile Include="Assets\Scripts\TimeScript.cs" />
      <Compile Include="Assets\Scripts\WindScript.cs" />

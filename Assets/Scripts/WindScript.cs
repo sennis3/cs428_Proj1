@@ -12,6 +12,9 @@ public class WindScript : MonoBehaviour
     string windDirStr = "";
     string dirSymbol = "";
 
+
+    public GameObject WindSock;
+
     string resultStr = "Loading...";
        string url = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=3e73c3cad5c6f14cbad12da1ff9856a1&units=imperial";
    
@@ -74,15 +77,28 @@ public class WindScript : MonoBehaviour
 
                 try
                 {
+                    WindSock.transform.rotation = Quaternion.Euler(0, 0, 0);
                     int windInt = Int32.Parse(windDirStr);
-                    if (windInt > 315 || windInt <= 45)
+                    if (windInt > 315 || windInt <= 45){
                         dirSymbol = "N";
-                    else if (windInt > 45 && windInt <= 135)
+                        //WindSock.transform.rotation = Quaternion.Euler(0, -90, 0);
+                        WindSock.transform.Rotate(0,0,0);
+                    }
+                    else if (windInt > 45 && windInt <= 135){
                         dirSymbol = "E";
-                    else if (windInt > 135 && windInt <= 225)
+                        //WindSock.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        WindSock.transform.Rotate(0,90,0);
+                    }
+                    else if (windInt > 135 && windInt <= 225){
                         dirSymbol = "S";
-                    else if (windInt > 225 && windInt <= 315)
+                        //WindSock.transform.rotation = Quaternion.Euler(0, 90, 0);
+                        WindSock.transform.Rotate(0,180,0);
+                    }
+                    else if (windInt > 225 && windInt <= 315){
                         dirSymbol = "W";
+                        //WindSock.transform.rotation = Quaternion.Euler(0, 180, 0);
+                        WindSock.transform.Rotate(0,-90,0);
+                    }
                 }
                 catch (FormatException)
                 {

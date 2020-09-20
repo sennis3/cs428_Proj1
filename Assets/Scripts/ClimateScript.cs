@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
+using System;
 
 public class ClimateScript : MonoBehaviour
 {
@@ -9,6 +10,18 @@ public class ClimateScript : MonoBehaviour
     public GameObject ClimateTextObject;
     string temperatureStr = "";
     string humidityStr = "";
+
+    public GameObject firstLevel;
+    public GameObject secondLevel;
+    public GameObject thirdLevel;
+    public GameObject fourthLevel;
+    public GameObject fifthLevel;
+
+    public GameObject humidFirstLevel;
+    public GameObject humidSecondLevel;
+    public GameObject humidThirdLevel;
+    public GameObject humidFourthLevel;
+    public GameObject humidFifthLevel;
 
     string resultStr = "Loading...";
 
@@ -97,12 +110,70 @@ public class ClimateScript : MonoBehaviour
                 Debug.Log("humidityIndex: " + humidityIndex);
                 Debug.Log("Humidity: " + strList[humidityIndex]);
                 Debug.Log("Humidity: " + humidityStr);
-                resultStr = temperatureStr + "°F\n" + humidityStr + "%";
+                resultStr = temperatureStr + "°F        " + humidityStr + "%";
                 Debug.Log("Result before: " + resultStr);
 
                 //ClimateTextObject.GetComponent<TextMeshPro>().text = resultStr;
-                resultStr = temperatureStr + "°F\n" + humidityStr + "%";
+                resultStr = temperatureStr + "°F        " + humidityStr + "%";
                 Debug.Log("Result after: " + resultStr);
+
+
+                firstLevel.SetActive(false);
+                secondLevel.SetActive(false);
+                thirdLevel.SetActive(false);
+                fourthLevel.SetActive(false);
+                fifthLevel.SetActive(false);
+
+                humidFirstLevel.SetActive(false);
+                humidSecondLevel.SetActive(false);
+                humidThirdLevel.SetActive(false);
+                humidFourthLevel.SetActive(false);
+                humidFifthLevel.SetActive(false);
+
+                double tempDouble = 0;
+                double humidDouble = 0;
+                try {
+                    tempDouble = Convert.ToDouble(temperatureStr);
+                    humidDouble = Convert.ToDouble(humidityStr);
+                }
+                catch (FormatException)
+                {
+                    Debug.Log("Error: Unable to parse temperatureStr or humidityStr");
+                }
+
+                Debug.Log("TempDouble: " + tempDouble);
+                if (tempDouble > 0){
+                    firstLevel.SetActive(true);
+                }
+                if (tempDouble > 25){
+                    secondLevel.SetActive(true);
+                }
+                if (tempDouble > 50){
+                    thirdLevel.SetActive(true);
+                }
+                if (tempDouble > 75){
+                    fourthLevel.SetActive(true);
+                }
+                if (tempDouble > 100){
+                    fifthLevel.SetActive(true);
+                }
+
+                Debug.Log("TempDouble: " + tempDouble);
+                if (tempDouble > 0){
+                    humidFirstLevel.SetActive(true);
+                }
+                if (tempDouble > 20){
+                    humidSecondLevel.SetActive(true);
+                }
+                if (tempDouble > 40){
+                    humidThirdLevel.SetActive(true);
+                }
+                if (tempDouble > 60){
+                    humidFourthLevel.SetActive(true);
+                }
+                if (tempDouble > 80){
+                    humidFifthLevel.SetActive(true);
+                }
             }
         }
     }
