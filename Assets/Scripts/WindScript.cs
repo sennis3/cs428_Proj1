@@ -11,6 +11,7 @@ public class WindScript : MonoBehaviour
     string windSpeedStr = "";
     string windDirStr = "";
     string dirSymbol = "";
+    int speedLevelIndex = 0;
 
 
     public GameObject WindSock;
@@ -74,11 +75,27 @@ public class WindScript : MonoBehaviour
                         break;
                     }
                 }
+                double speedDouble = 0;
 
                 try
                 {
-                    WindSock.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    //WindSock.transform.rotation = Quaternion.Euler(0, 0, 0);
                     int windInt = Int32.Parse(windDirStr);
+                    speedDouble = Convert.ToDouble(windSpeedStr);
+
+                    if (dirSymbol.Equals("N")){
+                        WindSock.transform.Rotate(0,0,0);
+                    }
+                    if (dirSymbol.Equals("E")){
+                        WindSock.transform.Rotate(0,-90,0);
+                    }
+                    if (dirSymbol.Equals("S")){
+                        WindSock.transform.Rotate(0,-180,0);
+                    }
+                    if (dirSymbol.Equals("W")){
+                        WindSock.transform.Rotate(0,90,0);
+                    }
+
                     if (windInt > 315 || windInt <= 45){
                         dirSymbol = "N";
                         //WindSock.transform.rotation = Quaternion.Euler(0, -90, 0);
@@ -99,6 +116,40 @@ public class WindScript : MonoBehaviour
                         //WindSock.transform.rotation = Quaternion.Euler(0, 180, 0);
                         WindSock.transform.Rotate(0,-90,0);
                     }
+
+                    float val;
+                    for (int i = 1; i <= 6; i++){
+                        if (speedLevelIndex == i){
+                            val = (float) -0.01*i;
+                            WindSock.transform.Translate(0,val,0);
+                        }
+                    }
+
+                    val = (float) 0.01;
+                    if (speedDouble > 0){
+                        WindSock.transform.Translate(0,val,0);
+                        speedLevelIndex = 1;
+                    }
+                    if (speedDouble > 3){
+                        WindSock.transform.Translate(0,val,0);
+                        speedLevelIndex = 2;
+                    }
+                    if (speedDouble > 6){
+                        WindSock.transform.Translate(0,val,0);
+                        speedLevelIndex = 3;
+                    }
+                    if (speedDouble > 9){
+                        WindSock.transform.Translate(0,val,0);
+                        speedLevelIndex = 4;
+                    }
+                    if (speedDouble > 12){
+                        WindSock.transform.Translate(0,val,0);
+                        speedLevelIndex = 5;
+                    }
+                    if (speedDouble > 15){
+                        WindSock.transform.Translate(0,val,0);
+                        speedLevelIndex = 6;
+                    }
                 }
                 catch (FormatException)
                 {
@@ -112,11 +163,12 @@ public class WindScript : MonoBehaviour
                 Debug.Log("dirIndex: " + dirIndex);
                 Debug.Log("WindDirection: " + strList[dirIndex]);
                 Debug.Log("WindDirection: " + windDirStr);
-                resultStr = windSpeedStr + "mph\n" + windDirStr + "°";
+                //resultStr = windSpeedStr + "mph\n" + windDirStr + "°";
                 Debug.Log("Result before: " + resultStr);
 
                 //WindTextObject.GetComponent<TextMeshPro>().text = resultStr;
-                resultStr = windSpeedStr + " mph\n" + windDirStr + "° " + dirSymbol;
+                //resultStr = windSpeedStr + " mph\n" + windDirStr + "° " + dirSymbol;
+                resultStr = windSpeedStr + " mph " + dirSymbol + "\nN is Forward";
                 Debug.Log("Result after: " + resultStr);
             }
         }
